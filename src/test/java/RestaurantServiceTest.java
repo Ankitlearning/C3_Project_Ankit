@@ -15,6 +15,7 @@ class RestaurantServiceTest {
         restaurant=service.addRestaurant("Amelie's cafe","Ram Vihar",LocalTime.parse("10:30:00"),LocalTime.parse("22:00:00"));
         restaurant.addToMenu("corn soup",119);
         restaurant.addToMenu("Oil Vegetable", 269);
+
     }
     //REFACTOR ALL THE REPEATED LINES OF CODE
 
@@ -29,7 +30,6 @@ class RestaurantServiceTest {
         restaurant= service.findRestaurantByName("Amelie's cafe");
         //Assertions.assertNotNull(restaurant);
         Assertions.assertEquals("Amelie's cafe",restaurant.getName());
-
 
     }
 
@@ -48,6 +48,7 @@ class RestaurantServiceTest {
         assertThrows(restaurantNotFoundException.class,
                 ()->{service.findRestaurantByName("Mera Restaurent");});
 
+
     }
     //<<<<<<<<<<<<<<<<<<<<SEARCHING>>>>>>>>>>>>>>>>>>>>>>>>>>
 
@@ -63,6 +64,7 @@ class RestaurantServiceTest {
         int initialNumberOfRestaurants = service.getRestaurants().size();
         service.removeRestaurant("Amelie's cafe");
         assertEquals(initialNumberOfRestaurants-1, service.getRestaurants().size());
+
     }
 
     @Test
@@ -76,6 +78,7 @@ class RestaurantServiceTest {
         //assertThrows(restaurantNotFoundException.class,()->service.removeRestaurant("Pantry d'or"));
         assertThrows(restaurantNotFoundException.class,
                 ()->service.removeRestaurant("Pantry d'or"));
+
     }
 
     @Test
@@ -89,6 +92,7 @@ class RestaurantServiceTest {
         int initialNumberOfRestaurants = service.getRestaurants().size();
         service.addRestaurant("Pumpkin Tales","Chennai",LocalTime.parse("12:00:00"),LocalTime.parse("23:00:00"));
         assertEquals(initialNumberOfRestaurants + 1,service.getRestaurants().size());
+        
     }
     //<<<<<<<<<<<<<<<<<<<<ADMIN: ADDING & REMOVING RESTAURANTS>>>>>>>>>>>>>>>>>>>>>>>>>>
 }

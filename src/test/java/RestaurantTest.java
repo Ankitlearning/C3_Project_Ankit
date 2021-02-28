@@ -23,6 +23,7 @@ class RestaurantTest {
         restaurant =new Restaurant("Amelie's cafe","Chennai",openingTime,closingTime);
         restaurant.addToMenu("Sweet corn soup",119);
         restaurant.addToMenu("Vegetable lasagne", 269);
+
     }
 
     //REFACTOR ALL THE REPEATED LINES OF CODE
@@ -41,9 +42,9 @@ class RestaurantTest {
         Restaurant rest= Mockito.mock(Restaurant.class);
         LocalTime current=LocalTime.parse("11:30:00");
 
+
         when(rest.getCurrentTime()).thenReturn(current);
         assertTrue(restaurant.isRestaurantOpen());
-
         //Assertions.assertTrue(current.isAfter(restaurant.openingTime) && current.isBefore(restaurant.closingTime));
         //assertEquals(closingTime,restaurant.closingTime);
     }
@@ -53,11 +54,11 @@ class RestaurantTest {
         //WRITE UNIT TEST CASE HERE
         //LocalTime openingTime = LocalTime.parse("10:30:00");
         //LocalTime closingTime = LocalTime.parse("22:00:00");
-        /*
-        restaurant =new Restaurant("Cmelie's cafe","Chennai",openingTime,closingTime);
+        /* restaurant =new Restaurant("Cmelie's cafe","Chennai",openingTime,closingTime);
         restaurant.addToMenu("Sweet corn soup with sauce",119);
         restaurant.addToMenu("Vegetable lasagne with sauce", 269);
         */
+
         Restaurant restau= Mockito.mock(Restaurant.class);
         LocalTime current=LocalTime.parse("23:30:30");
 
@@ -79,11 +80,11 @@ class RestaurantTest {
         restaurant.addToMenu("Sweet corn soup",119);
         restaurant.addToMenu("Vegetable lasagne", 269);*/
 
+
         List<String> name=new ArrayList<>();
         for(Item resItem: restaurant.getMenu()){
             name.add(resItem.getName());
         }
-
          int totalOrderValue = restaurant.getTotalOrderValue( name);
         assertEquals(388,totalOrderValue);
 
@@ -101,8 +102,6 @@ class RestaurantTest {
         }
         int totalOrderValue = restaurant.getTotalOrderValue( name);
         assertFalse(400==totalOrderValue);
-
-
     }
 
     @Test
@@ -117,8 +116,6 @@ class RestaurantTest {
         }
         int totalOrderValue = restaurant.getTotalOrderValue( name);
         assertNotNull(totalOrderValue);
-
-
     }
 
     @Test
@@ -144,6 +141,7 @@ class RestaurantTest {
         int initialMenuSize = restaurant.getMenu().size();
         restaurant.removeFromMenu("Vegetable lasagne");
         assertEquals(initialMenuSize-1,restaurant.getMenu().size());
+
     }
     @Test
     public void removing_item_that_does_not_exist_should_throw_exception() {
@@ -155,6 +153,7 @@ class RestaurantTest {
 
         assertThrows(itemNotFoundException.class,
                 ()->restaurant.removeFromMenu("French fries"));
+
     }
     //<<<<<<<<<<<<<<<<<<<<<<<MENU>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
     @Test
@@ -169,6 +168,7 @@ class RestaurantTest {
         //Assertions.assertNotNull(restaurant);
         Assertions.assertEquals("Sweet corn soup", item.getName());
         Assertions.assertNotNull(item.getName());
+
     }
     @Test
     public void searching_for_existing_item_should_return_null_restaurant_item_Object()  {
@@ -180,6 +180,7 @@ class RestaurantTest {
         //Assertions.assertNotNull(item.getName());
         Assertions.assertNull(item);
 
+
     }
 
     @Test
@@ -189,5 +190,6 @@ class RestaurantTest {
     @Test
     public void test_Get_Restaurent_Name_False(){
         Assertions.assertFalse(restaurant.getName().equals("Tea cafe"));
+
     }
 }

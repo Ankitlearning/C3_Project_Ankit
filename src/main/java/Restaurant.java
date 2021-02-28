@@ -56,7 +56,7 @@ public class Restaurant {
             Item item= findItemByName(name);
             value= value + item.getPrice();
         }
-        return value;
+        return value ;
     }
     
     public void removeFromMenu(String itemName) throws itemNotFoundException {
